@@ -1,0 +1,27 @@
+Starting a react js app
+
+main files and packages needed
+
+npm => node package manager
+
+install node from website https://nodejs.org/en/download/
+
+post npm installation
+
+=> open terminal
+
+type commands
+
+> to install react
+
+=> npm install create-react-app
+
+or type below command for global installation 
+
+=> npm install -g create-react-app
+
+> to create a react app type th command below
+
+npx is used instead of npm to fetch the latest version
+
+=> npx create-react-app <name of your app>
