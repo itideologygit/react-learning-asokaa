@@ -2,13 +2,11 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
-import Login from './View/Login/LoginView';
-import './index.css';
+
+import Routes from './config/routes'
 
 render(
-  <React.StrictMode>
-    <Login />
-  </React.StrictMode>,
+  <Routes />,
   document.getElementById('root')
 );
 
