@@ -3,8 +3,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom'
 
 import { loginvalidator } from '../../_helper/validator'
+import Auth from '../../services/auth'
 
 export default class LoginView extends React.Component {
 
@@ -17,6 +19,8 @@ export default class LoginView extends React.Component {
             password: "",
             usernameError: false,
             passwordError: false,
+            error: true,
+            loggedin: false,
         }
     }
 
@@ -32,20 +36,33 @@ export default class LoginView extends React.Component {
     // Function for validation inside the class
     validator = event => {
         // The below is the validatior function imported from _helper
-        this.setState( loginvalidator(this.state) )
+        this.setState(loginvalidator(this.state))
     }
 
 
 
     login = () => {
-        if( !this.state.error ){
+        if (!this.state.error) {
             alert(" Hi..... You  are logged in ")
+            // login function from Auth class to set the isAuthenticated as true
+            Auth.onLogin()
+            this.setState(
+                {
+                    loggedin: Auth.isAuth()
+                }
+            )
         }
     }
 
     render = () => {
         return (
             <Grid container style={{ marginTop: '100px', marginLeft: '100px' }} >
+
+                {/* create a link to ssample page  import Link from react-router-dom */}
+                {this.state.loggedin
+                    ? <Link to='/sample'> Sample page </Link>
+                    : null}
+
                 <Grid item xs={12} sm={12} md={12} style={{ marginTop: '10px' }} >
                     <TextField
                         label="Username"

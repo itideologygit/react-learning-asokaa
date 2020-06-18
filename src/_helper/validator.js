@@ -12,14 +12,17 @@ export function loginvalidator(state) {
 
     var error = {
         usernameError: false,
-        passwordError: false
+        passwordError: false,
+        error: false
     }
-
+    
     if (!state.username) {
-            error.usernameError = true
+        error.usernameError = true
+        error.error= true
     }
     if (!state.password) {
         error.passwordError = true
+        error.error= true
     }
     
     return error
